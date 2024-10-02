@@ -1,0 +1,46 @@
+1. Vernam Cipher:
+import java.util.Scanner;
+public class VernamCipher {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter Plaintext: ");
+String text = sc.nextLine().toLowerCase();
+System.out.print("Enter One Time PASSWORD of length " +
+text.length() + ": ");
+String key = sc.nextLine().toLowerCase();
+String encrypted = process(text, key);
+System.out.println("Encrypted Text: " + encrypted);
+System.out.println("Decrypted Text: " + process(encrypted,
+key));
+}
+private static String process(String input, String key) {
+StringBuilder result = new StringBuilder();
+for (int i = 0; i < input.length(); i++) {
+char c = (char) (((input.charAt(i) - 'a') ^ (key.charAt(i) - 'a')%26) + 'a');
+result.append(c);
+}
+return result.toString();
+}
+}
+
+
+2. Railfence Cipher:
+import java.util.Scanner;
+public class RailFenceCipher {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter plaintext: ");
+String plaintext = sc.nextLine();
+// Encryption
+String upper = "";
+String lower = "";
+for (int i = 0; i < plaintext.length(); i++) {
+if (i % 2 == 0) {
+upper += plaintext.charAt(i);
+} else {
+lower += plaintext.charAt(i);
+}
+}
+String ciphertext = upper + lower;
+System.out.println("Ciphertext: " + ciphertext);
+}}
